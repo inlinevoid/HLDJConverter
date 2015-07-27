@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{09A792DF-087F-4105-928B-C21A7D43AE1E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HLDJConverter.UI</RootNamespace>
     <AssemblyName>HLDJConverter</AssemblyName>
@@ -141,11 +141,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\hldjicon.ico" />
-    <EmbeddedResource Include="..\HLDJConverter\bin\Debug\HLDJConverterLib.dll">
-      <Link>Resources\Assemblies\HLDJConverterLib.dll</Link>
-    </EmbeddedResource>
     <EmbeddedResource Include="..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll">
       <Link>Resources\Assemblies\Ookii.Dialogs.Wpf.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\HLDJConverter\bin\Release\HLDJConverterLib.dll">
+      <Link>Resources\Assemblies\HLDJConverterLib.dll</Link>
     </EmbeddedResource>
     <Content Include="ffmpeg.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -31,8 +31,8 @@ namespace HLDJConverter
             };
             process.StartInfo = new ProcessStartInfo
             {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
+                //RedirectStandardOutput = true,
+                //RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = @"ffmpeg.exe",

@@ -139,5 +139,10 @@ namespace HLDJConverter.UI
         {
             System.Diagnostics.Process.Start("mailto:inlinevoidmain@gmail.com");
         }
+
+        private void HelpRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
     }
 }

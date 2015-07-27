@@ -26,7 +26,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock TextTrimming="CharacterEllipsis"><Run Text="HLDJConverter" FontFamily="Segoe UI SemiBold"/> by inlinevoid</TextBlock>
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink NavigateUri="http://www.google.com">Help/FAQ</Hyperlink></TextBlock>
+                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink NavigateUri="https://www.github.com/inlinevoid/HLDJConverter" RequestNavigate="HelpRequestNavigate">Help/FAQ</Hyperlink></TextBlock>
                     <TextBlock Margin="0, 0, 0, 0" ToolTip="inlinevoidmain@gmail.com"><Hyperlink Click="Hyperlink_Click">Contact</Hyperlink></TextBlock>
                 </StackPanel>
             </Grid>
