@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HLDJConverter.UI"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="HLDJConverter" Width="380" Height="450" Closing="Window_Closing"
+        Title="HLDJConverter v1.1" Width="380" Height="450" Closing="Window_Closing"
         Icon="Resources/Images/hldjicon.ico">
     <Grid>
         <Grid.RowDefinitions>
@@ -64,7 +64,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding DisplayName}" Margin="0, 0, 10, 0" TextTrimming="WordEllipsis"/>
+                                <TextBlock Grid.Column="0" Text="{Binding DisplayName}" Margin="0, 0, 13, 0" TextTrimming="CharacterEllipsis"/>
                                 <TextBlock Grid.Column="1" Text="{Binding Status}"/>
                             </Grid>
                         </DataTemplate>

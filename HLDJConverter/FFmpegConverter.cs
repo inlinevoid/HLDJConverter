@@ -26,7 +26,6 @@ namespace HLDJConverter
             process.Exited += async (s, a) =>
             {
                 await Task.Run(async () => await FixFFmpegWavFileHeader(destination));
-                //FixFFmpegWavFileHeader(destination);
                 processCompletionTask.SetResult(null);
             };
             process.StartInfo = new ProcessStartInfo

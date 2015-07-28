@@ -52,14 +52,24 @@ namespace HLDJConverter.UI
         {
             if(e.Data.GetDataPresent(DataFormats.Text))
             {
-                Application.Current.Dispatcher.BeginInvoke(new Func<Task>(async () => await HandleYoutubeConversion((string)e.Data.GetData(DataFormats.Text))));
+                Application.Current.Dispatcher.BeginInvoke(
+                    new Func<Task>(async () => await HandleYoutubeConversion((string)e.Data.GetData(DataFormats.Text))));
             }
             else if(e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach(var file in files)
                 {
-                    Application.Current.Dispatcher.BeginInvoke(new Func<Task>(async () => await HandleFileConversion(file)));
+                    if(Path.GetExtension(file) == ".url")
+                    {
+                        Application.Current.Dispatcher.BeginInvoke(
+                            new Func<Task>(async () => await HandleYoutubeConversion(YoutubeDownloader.ExtractURLFromShortcut(file))));
+                    }
+                    else
+                    {
+                        Application.Current.Dispatcher.BeginInvoke(
+                            new Func<Task>(async () => await HandleFileConversion(file)));
+                    }
                 }
             }
 
@@ -87,12 +97,25 @@ namespace HLDJConverter.UI
             ConversionJobsListView.ScrollIntoView(job);
 
             // Query youtube for the highest quality video download
-            var query = await Task.Run(() => YoutubeDownloader.QueryYoutubevideo(link));
+            var query = await Task.Run(() => YoutubeDownloader.QueryYoutubeVideo(link));
+
+            if(!query.IsSuccess)
+            {
+                job.Status = $"Error: {query.ErrorMessage}";
+                return;
+            }
 
             // Download
             job.DisplayName = $"{query.Video.Title} ({query.Video.Resolution.ToString()}p)";
             job.Status = "Downloading";
             var result = await Task.Run(() => YoutubeDownloader.DownloadYoutubeVideo(query));
+
+            if(!result.IsSuccess)
+            {
+                job.Status = $"Error: {result.ErrorMessage}";
+                File.Delete(result.Filepath);
+                return;
+            }
 
             // Convert
             job.Status = "Converting";

@@ -42,5 +42,22 @@ namespace HLDJConverter.Tests
                 Assert.AreEqual(test.ExpectedID, YoutubeDownloader.ExtractYoutubeID(test.Link));
             }
         }
+
+        [TestMethod]
+        public void ShouldReturnURLFromShortcut()
+        {
+            var testCases = new[]
+            {
+                new {ExpectedURL = "https://www.youtube.com/watch?v=p6j8fuvQICI", ShortcutFilepath = "TestShortcuts/Link1.url"},
+                new {ExpectedURL = "https://www.youtube.com/watch?v=f9qavey27Kc", ShortcutFilepath = "TestShortcuts/Link2.url"},
+                new {ExpectedURL = "https://www.youtube.com/watch?v=WpTOzX4xDUw", ShortcutFilepath = "TestShortcuts/Link3.url"},
+                new {ExpectedURL = "https://www.youtube.com/watch?v=QGHlVLsbuoc", ShortcutFilepath = "TestShortcuts/Link4.url"},
+            };
+
+            foreach(var test in testCases)
+            {
+                Assert.AreEqual(test.ExpectedURL, YoutubeDownloader.ExtractURLFromShortcut(test.ShortcutFilepath));
+            }
+        }
     }
 }
