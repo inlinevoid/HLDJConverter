@@ -60,7 +60,7 @@ namespace HLDJConverter.UI
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach(var file in files)
                 {
-                    if(Path.GetExtension(file) == ".url")
+                    if(string.Compare(Path.GetExtension(file), ".url", true) == 0)
                     {
                         Application.Current.Dispatcher.BeginInvoke(
                             new Func<Task>(async () => await HandleYoutubeConversion(YoutubeDownloader.ExtractURLFromShortcut(file))));
