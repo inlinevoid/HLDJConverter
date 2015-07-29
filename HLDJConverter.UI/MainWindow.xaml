@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HLDJConverter.UI"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="HLDJConverter v1.1" Width="380" Height="450" Closing="Window_Closing"
+        Title="HLDJConverter v1.2" Width="380" Height="450" Closing="Window_Closing"
         Icon="Resources/Images/hldjicon.ico">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,8 +26,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock TextTrimming="CharacterEllipsis"><Run Text="HLDJConverter" FontFamily="Segoe UI SemiBold"/> by inlinevoid</TextBlock>
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink NavigateUri="https://www.github.com/inlinevoid/HLDJConverter" RequestNavigate="HelpRequestNavigate">Help/FAQ</Hyperlink></TextBlock>
-                    <TextBlock Margin="0, 0, 0, 0" ToolTip="inlinevoidmain@gmail.com"><Hyperlink Click="Hyperlink_Click">Contact</Hyperlink></TextBlock>
+                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink NavigateUri="https://www.github.com/inlinevoid/HLDJConverter" RequestNavigate="HyperlinkClick">Help/FAQ</Hyperlink></TextBlock>
+                    <TextBlock Margin="0, 0, 0, 0" ToolTip="inlinevoidmain@gmail.com"><Hyperlink NavigateUri="mailto:inlinevoidmain@gmail.com" RequestNavigate="HyperlinkClick">Contact</Hyperlink></TextBlock>
                 </StackPanel>
             </Grid>
         </Border>

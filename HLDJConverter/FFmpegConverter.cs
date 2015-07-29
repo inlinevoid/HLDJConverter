@@ -17,7 +17,7 @@ namespace HLDJConverter
                 dstFilename = Path.GetFileNameWithoutExtension(srcFilepath);
             
             dstFilename = RemoveInvalidFilenameCharacters(dstFilename);
-
+            
             string destination = $"{dstFolder}\\{dstFilename}.wav";
 
             var process = new Process();

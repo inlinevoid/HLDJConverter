@@ -42,7 +42,7 @@ namespace HLDJConverter.UI
             // Make sure ffmpeg is in the directory.
             if(!File.Exists("ffmpeg.exe"))
             {
-                MessageBox.Show("Couldn't start HLDJConverter!  FFmpeg.exe is missing from the directory.");
+                MessageBox.Show(this, "Couldn't start HLDJConverter!  FFmpeg.exe is missing from the directory.", "There was a problem");
                 Close();
             }
         }
@@ -50,6 +50,13 @@ namespace HLDJConverter.UI
 
         private void InputSectionDragDrop(object sender, DragEventArgs e)
         {
+            if(string.IsNullOrEmpty(Settings.OutputFolder))
+            {
+                Application.Current.Dispatcher.BeginInvoke(
+                    new Action(() => MessageBox.Show(this, "You haven't set an output folder yet.", "There was a problem")));
+                return;
+            }
+
             if(e.Data.GetDataPresent(DataFormats.Text))
             {
                 Application.Current.Dispatcher.BeginInvoke(
@@ -158,12 +165,7 @@ namespace HLDJConverter.UI
                 Settings.OutputFolder = dialog.SelectedPath;
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("mailto:inlinevoidmain@gmail.com");
-        }
-
-        private void HelpRequestNavigate(object sender, RequestNavigateEventArgs e)
+        private void HyperlinkClick(object sender, RequestNavigateEventArgs e)
         {
             System.Diagnostics.Process.Start(e.Uri.ToString());
         }
