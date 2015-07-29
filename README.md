@@ -1,5 +1,5 @@
 #### Where can I download it?
-**[Click here to download v1.1](https://github.com/inlinevoid/HLDJConverter/releases/download/1.1/HLDJC.1.1.Full.zip)**
+**[Click here to download v1.2](https://github.com/inlinevoid/HLDJConverter/releases/download/1.2/HLDJC.1.2.Full.zip)**
 
 #### What does it do?
 Converts your music/media into a format that HLDJ can play.
@@ -27,6 +27,11 @@ It's very likely that Youtube functionality will break as time goes on due to th
 ![Screenshot](http://i.imgur.com/h77YRC9.png)
 
 #### Changelog
+###### v1.2
+- Added a null check for the output folder.
+- Fixed a crash when trying to convert Firefox .url files.
+- Replaced FFmpeg.exe with the 32-bit version
+
 ###### v1.1
 - Added more descriptive error messages for failed Youtube downloads.
 - Added support for dropping .url files and parsing out the Youtube links.
