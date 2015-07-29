@@ -6,7 +6,7 @@ Converts your music/media into a format that HLDJ can play.
 
 #### How do I use it?
 1. Set the `Output Folder` to the directory you want converted songs saved to.  Usually `HLDJ\Audio`.
-2. Drag any media file (.mp3, .ogg, .mp4, .wav, etc.) or Youtube link into the drop area.
+2. Drag any media files (.mp3, .ogg, .mp4, .wav, etc.) or Youtube links into the drop area.
 3. That's it!
 
 #### What media formats can it convert?
