@@ -1,5 +1,5 @@
 #### Where can I download it?
-**[Click here to download v1.2](https://github.com/inlinevoid/HLDJConverter/releases/download/1.2/HLDJC.1.2.Full.zip)**
+**[Click here to download v1.2 for Windows](https://github.com/inlinevoid/HLDJConverter/releases/download/1.2/HLDJC.1.2.Full.zip)**
 
 #### What does it do?
 Converts your music/media into a format that HLDJ can play.
