@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HLDJConverter.UI"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="HLDJConverter v1.2" Width="380" Height="450" Closing="Window_Closing"
+        Title="HLDJConverter v1.3" Width="380" Height="450" Closing="Window_Closing"
         Icon="Resources/Images/hldjicon.ico">
     <Grid>
         <Grid.RowDefinitions>
@@ -52,8 +52,10 @@
             <TextBlock Text="Drag and drop media files or Youtube links to convert" FontSize="14" Margin="15, 0, 15, 0" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"/>
         </Grid>
         
-        <!-- ConversionJobs List -->
+        <!-- Splitter -->
         <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" Focusable="False" Height="13" Background="Transparent" />
+        
+        <!-- ConversionJobs List -->
         <Grid Grid.Row="4">
             <Border BorderBrush="#D7D7D7" BorderThickness="0, 2, 0, 0">
                 <ListView x:Name="ConversionJobsListView"  BorderThickness="0" ItemsSource="{Binding ConversionJobs}" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">

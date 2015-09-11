@@ -126,7 +126,7 @@ namespace HLDJConverter.UI
 
             // Convert
             job.Status = "Converting";
-            await FFmpegConverter.ConvertToWavAsync(result.Filepath, Settings.OutputFolder, result.VideoTitle);
+            await FFmpegConverter.ConvertToWavAsync(result.Filepath, Settings.OutputFolder, Settings.OutputBitrate, Settings.OutputVolume, result.VideoTitle);
 
             // Finish
             job.Status = "Done";
@@ -144,7 +144,7 @@ namespace HLDJConverter.UI
             ConversionJobsListView.ScrollIntoView(job);
 
             // Convert
-            await FFmpegConverter.ConvertToWavAsync(filepath, Settings.OutputFolder);
+            await FFmpegConverter.ConvertToWavAsync(filepath, Settings.OutputFolder, Settings.OutputBitrate, Settings.OutputVolume);
 
             // Finish
             job.Status = "Done";

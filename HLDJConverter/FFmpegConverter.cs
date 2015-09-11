@@ -11,7 +11,7 @@ namespace HLDJConverter
 {
     public sealed class FFmpegConverter
     {
-        public static Task ConvertToWavAsync(string srcFilepath, string dstFolder, string dstFilename = null)
+        public static Task ConvertToWavAsync(string srcFilepath, string dstFolder, int dstBitrate, double dstVolume, string dstFilename = null)
         {
             if(string.IsNullOrEmpty(dstFilename))
                 dstFilename = Path.GetFileNameWithoutExtension(srcFilepath);
@@ -28,6 +28,7 @@ namespace HLDJConverter
                 await Task.Run(async () => await FixFFmpegWavFileHeader(destination));
                 processCompletionTask.SetResult(null);
             };
+
             process.StartInfo = new ProcessStartInfo
             {
                 //RedirectStandardOutput = true,
@@ -35,8 +36,8 @@ namespace HLDJConverter
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = @"ffmpeg.exe",
-                Arguments = $"-y -i \"{srcFilepath}\" -map_metadata -1 -aq 100 -ac 1 -acodec pcm_s16le -ar 22050 \"{destination}\"",
-                
+                Arguments = $"-y -i \"{srcFilepath}\" -map_metadata -1 -aq 100 -ac 1 -acodec pcm_s16le -ar {dstBitrate.ToString()} -af \"volume={dstVolume:0.00}\" \"{destination}\"",
+
             };
             
             process.Start();
