@@ -28,6 +28,10 @@ It's very likely that Youtube functionality will break as time goes on due to th
 ![Screenshot](http://i.imgur.com/h77YRC9.png)
 
 #### Changelog
+###### v1.3
+- Added a bitrate option to the config file.
+- Added a volume option to the config file.
+
 ###### v1.2
 - Added a null check for the output folder.
 - Fixed a crash when trying to convert Firefox .url files.
