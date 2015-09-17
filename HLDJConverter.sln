@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter.Tests", "HLDJConverter.Tests\HLDJConverter.Tests.csproj", "{FF2B2574-50EF-4790-89F2-BD2A50E6E454}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter", "src\HLDJConverter\HLDJConverter.csproj", "{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter.UI", "HLDJConverter.UI\HLDJConverter.UI.csproj", "{09A792DF-087F-4105-928B-C21A7D43AE1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter.UI", "src\HLDJConverter.UI\HLDJConverter.UI.csproj", "{09A792DF-087F-4105-928B-C21A7D43AE1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter", "HLDJConverter\HLDJConverter.csproj", "{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLDJConverter.Tests", "tests\HLDJConverter.Tests\HLDJConverter.Tests.csproj", "{FF2B2574-50EF-4790-89F2-BD2A50E6E454}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE13FB6-D178-42C7-9AB0-4BCEE6B7AB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A792DF-087F-4105-928B-C21A7D43AE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2B2574-50EF-4790-89F2-BD2A50E6E454}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

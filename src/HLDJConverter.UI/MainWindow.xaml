@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:HLDJConverter.UI"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="HLDJConverter v1.3" Width="380" Height="450" Closing="Window_Closing"
+        Width="380" Height="450"
+        Topmost="{Binding Settings.KeepWindowTopmost}"
         Icon="Resources/Images/hldjicon.ico">
     <Grid>
+        <!-- MainWindow Layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="88" MinHeight="58"/>
+            <RowDefinition Height="88" MinHeight="64"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" MinHeight="42"/>
         </Grid.RowDefinitions>
@@ -26,8 +28,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock TextTrimming="CharacterEllipsis"><Run Text="HLDJConverter" FontFamily="Segoe UI SemiBold"/> by inlinevoid</TextBlock>
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink NavigateUri="https://www.github.com/inlinevoid/HLDJConverter" RequestNavigate="HyperlinkClick">Help/FAQ</Hyperlink></TextBlock>
-                    <TextBlock Margin="0, 0, 0, 0" ToolTip="inlinevoidmain@gmail.com"><Hyperlink NavigateUri="mailto:inlinevoidmain@gmail.com" RequestNavigate="HyperlinkClick">Contact</Hyperlink></TextBlock>
+                    <TextBlock Margin="0, 0, 15, 0"><Hyperlink Focusable="False" NavigateUri="https://www.github.com/inlinevoid/HLDJConverter" RequestNavigate="HyperlinkClick">Help/FAQ</Hyperlink></TextBlock>
+                    <TextBlock Margin="0, 0, 0, 0" ToolTip="inlinevoidmain@gmail.com"><Hyperlink Focusable="False" NavigateUri="mailto:inlinevoidmain@gmail.com" RequestNavigate="HyperlinkClick">Contact</Hyperlink></TextBlock>
                 </StackPanel>
             </Grid>
         </Border>
@@ -42,14 +44,22 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Output Folder" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="2" Text="{Binding OutputFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
-            <Button Width="46" Grid.Column="4" Content="" FontFamily="Segoe UI Symbol" SnapsToDevicePixels="True" Click="OutputFolderDialogClick"/>
+            <TextBox Grid.Column="2" Focusable="False" Text="{Binding OutputFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+            <Button Width="46" Grid.Column="4" Content="" Focusable="False" FontFamily="Segoe UI Symbol" SnapsToDevicePixels="True" Click="OutputFolderDialogClick"/>
         </Grid>
         
         <!-- File Drop area -->
         <Grid Grid.Row="2" Margin="10, 0, 10, 0" AllowDrop="True" Drop="InputSectionDragDrop" DragEnter="InputSectionDragEnter" DragLeave="InputSectionDragLeave" Background="Transparent" Opacity="0.5">
             <Rectangle StrokeThickness="3" Stroke="#686868" StrokeDashArray="4 2"/>
-            <TextBlock Text="Drag and drop media files or Youtube links to convert" FontSize="14" Margin="15, 0, 15, 0" FontFamily="Segoe UI SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"/>
+            <Grid Margin="15, 0, 15, 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*" MaxWidth="200"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/HLDJConverter;component/Resources/Images/drop.png" MaxHeight="36"/>
+                <TextBlock Grid.Column="2"  Text="Drag and drop media files or Youtube links to convert" FontSize="14" FontFamily="Segoe UI SemiBold" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+            </Grid>
         </Grid>
         
         <!-- Splitter -->
@@ -58,7 +68,7 @@
         <!-- ConversionJobs List -->
         <Grid Grid.Row="4">
             <Border BorderBrush="#D7D7D7" BorderThickness="0, 2, 0, 0">
-                <ListView x:Name="ConversionJobsListView"  BorderThickness="0" ItemsSource="{Binding ConversionJobs}" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="ConversionJobsListView"  BorderThickness="0" ItemsSource="{Binding ConversionJobs}" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="VerticalOnly">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid VerticalAlignment="Center">
@@ -66,8 +76,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding DisplayName}" Margin="0, 0, 13, 0" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Grid.Column="1" Text="{Binding Status}"/>
+                                <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="0, 0, 13, 0" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock Grid.Column="1" Text="{Binding StatusDisplay}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -30,7 +30,7 @@ namespace HLDJConverter.Tests
 
             foreach(var test in testCases)
             {
-                Assert.AreEqual(test.ValidFilename, FFmpegConverter.RemoveInvalidFilenameCharacters(test.Filename));
+                Assert.AreEqual(test.ValidFilename, MediaConverter.RemoveInvalidFilenameCharacters(test.Filename));
             }
         }
     }

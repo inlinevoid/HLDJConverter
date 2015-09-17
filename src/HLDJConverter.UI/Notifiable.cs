@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLDJConverter.UI
 {
-    public class Notifiable: INotifyPropertyChanged
+    public abstract class Notifiable: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

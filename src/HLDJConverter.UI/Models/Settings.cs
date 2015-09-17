@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLDJConverter.UI
+namespace HLDJConverter.UI.Models
 {
     public sealed class Settings: Notifiable
     {
-        private string mOutputFolder;
+        private string mOutputFolder = "";
         public string OutputFolder
         {
             get { return mOutputFolder; }
@@ -28,22 +28,19 @@ namespace HLDJConverter.UI
             get { return mOutputBitrate; }
             set { SetField(ref mOutputBitrate, value); }
         }
-    }
 
-    public sealed class ConversionJob: Notifiable
-    {
-        private string mDisplayName;
-        public string DisplayName
+        private bool mUploadCrashGist = true;
+        public bool UploadCrashGist
         {
-            get { return mDisplayName; }
-            set { SetField(ref mDisplayName, value); }
+            get { return mUploadCrashGist; }
+            set {SetField(ref mUploadCrashGist, value); }
         }
-        
-        private string mStatus;
-        public string Status
+
+        private bool mKeepWindowTopmost = false;
+        public bool KeepWindowTopmost
         {
-            get { return mStatus; }
-            set { SetField(ref mStatus, value); }
+            get { return mKeepWindowTopmost; }
+            set { SetField(ref mKeepWindowTopmost, value); }
         }
     }
 }

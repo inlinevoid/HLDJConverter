@@ -55,12 +55,6 @@
     <Compile Include="YoutubeDownloaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HLDJConverter\HLDJConverter.csproj">
-      <Project>{7be13fb6-d178-42c7-9ab0-4bcee6b7ab0c}</Project>
-      <Name>HLDJConverter</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="TestShortcuts\Link1.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -73,6 +67,12 @@
     <None Include="TestShortcuts\Link4.url">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HLDJConverter\HLDJConverter.csproj">
+      <Project>{7be13fb6-d178-42c7-9ab0-4bcee6b7ab0c}</Project>
+      <Name>HLDJConverter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
