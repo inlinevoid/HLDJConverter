@@ -29,11 +29,11 @@ It's very likely that Youtube functionality will break as time goes on due to th
 
 #### Changelog
 ###### v1.4
-- Added invalid link detection
+- Added invalid Youtube link error message
 - Added crash logs
 - Added automatic Gist upload of crash logs
 - Added the ability to paste links/files using the `ctrl + v` shortcut
-- Added a check for duplicate files.  This fixes a bug where HLDJC could overwrite files if the output folder was the same as the source file's folder.
+- Fixed a bug where converted files would silently overwrite files with the same name
 - Added a check for invalid config file
 - Fixed the crash when trying to convert folders
 - Added `KeepWindowTopmost` option to the config file
