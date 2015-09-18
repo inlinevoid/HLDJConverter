@@ -23,7 +23,7 @@ namespace HLDJConverter.UI
             // Make sure ffmpeg exists in the same directory.
             if(!File.Exists("ffmpeg.exe"))
             {
-                MessageBox.Show(this, "Couldn't start HLDJConverter!  ffmpeg.exe is missing from the directory.", "There was a problem");
+                MessageBox.Show(this, "Couldn't start HLDJConverter!  Make sure ffmpeg.exe is in the same directory as HLDJConverter.", "There was a problem");
                 Close();
             }
 
@@ -80,7 +80,8 @@ namespace HLDJConverter.UI
         {
             if(string.IsNullOrEmpty(Settings.OutputFolder))
             {
-                await Application.Current.Dispatcher.InvokeAsync(() => MessageBox.Show(this, "You haven't set an output folder yet.", "There was a problem"));
+                
+                await Application.Current.Dispatcher.InvokeAsync(() => MessageBox.Show(this, "You need to set an output folder for your converted songs first.", "There was a problem"));
             }
             else if(data.GetDataPresent(DataFormats.UnicodeText))
             {
@@ -88,16 +89,22 @@ namespace HLDJConverter.UI
             }
             else if(data.GetDataPresent(DataFormats.FileDrop))
             {
-                string[] files = (string[])data.GetData(DataFormats.FileDrop);
-                foreach(var file in files)
+                string[] filepaths = (string[])data.GetData(DataFormats.FileDrop);
+                foreach(var filepath in filepaths)
                 {
-                    if(string.Compare(Path.GetExtension(file), ".url", true) == 0)
+                    string extension = Path.GetExtension(filepath);
+
+                    if(string.IsNullOrWhiteSpace(extension))
                     {
-                        HandleYoutubeConversion(YoutubeDownloader.ExtractURLFromShortcut(file));
+                        await Application.Current.Dispatcher.InvokeAsync(() => MessageBox.Show(this, "Folders aren't supported.  Instead, select all of the files inside the folder you wish to convert.", "There was a problem"));
+                    }
+                    else if(string.Compare(extension, ".url", true) == 0)
+                    {
+                        HandleYoutubeConversion(YoutubeDownloader.ExtractURLFromShortcut(filepath));
                     }
                     else
                     {
-                        HandleFileConversion(file);
+                        HandleFileConversion(filepath);
                     }
                 }
             }
@@ -213,56 +220,6 @@ namespace HLDJConverter.UI
             // Finish
             job.Status = ConversionJobStatus.Done;
         }
-
-        //private async Task HandleYoutubeConvert(string link)
-        //{
-        //    var item = new ConversionItem
-        //    {
-        //        Title = link,
-        //    };
-
-        //    var video = await ConversionJobDownload(item, link);
-        //    await ConversionJobConvert(item, video.Filepath, $"{Settings.OutputFolder}\\{video.Video.Title}.wav");
-
-        //    item.Status = ConversionJobStatus.Done;
-        //}
-
-        //private async Task ConversionJobConvert(ConversionItem item, string srcFilepath, string dstFilepath)
-        //{
-        //    item.Status = ConversionJobStatus.Converting;
-        //    await MediaConverter.FFmpegConvertToWavAsync(srcFilepath, dstFilepath, Settings.OutputBitrate, Settings.OutputVolume);
-        //}
-
-        //private async Task<VideoDownload> ConversionJobDownload(ConversionItem item, string link)
-        //{
-        //    item.Status = ConversionJobStatus.Resolving;
-            
-        //    // Resolve
-        //    var queryResult = await YoutubeDownloader.QueryYoutubeVideo(link);
-        //    if(queryResult.IsError)
-        //    {
-        //        item.Status = ConversionJobStatus.Error;
-        //        item.StatusDetails = queryResult.Error;
-        //    }
-        //    else
-        //    {
-        //        var video = queryResult.Value;
-
-        //        // Download
-        //        item.Status = ConversionJobStatus.Downloading;
-        //        item.Title = $"{video.Title} ({video.Resolution.ToString()}p)";
-
-        //        var downloadResult = await YoutubeDownloader.DownloadYoutubeVideo(video);
-        //        if(downloadResult.IsError)
-        //        {
-        //            item.Status = ConversionJobStatus.Error;
-        //            item.StatusDetails = downloadResult.Error;
-        //        }
-
-        //        downloadResult.Value.
-        //    }
-        //}
-
 
         private void InputSectionDragEnter(object sender, DragEventArgs e)
         {
