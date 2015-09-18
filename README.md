@@ -32,23 +32,23 @@ It's very likely that Youtube functionality will break as time goes on due to th
 - Added invalid link detection
 - Added crash logs
 - Added automatic Gist upload of crash logs
-- Added the ability to paste links/files using Ctrl-V
+- Added the ability to paste links/files using the `ctrl + v` shortcut
 - Added a check for duplicate files.  This fixes a bug where HLDJC could overwrite files if the output folder was the same as the source file's folder.
 - Added a check for invalid config file
 - Fixed the crash when trying to convert folders
-- Added `KeepWindowTopmost` option
+- Added `KeepWindowTopmost` option to the config file
 - Minor UI changes
 - Made dialog error messages more helpful
 
 ###### v1.3
-- Added `OutputBitrate` option to the config file.
-- Added `OutputVolume` option to the config file.
+- Added `OutputBitrate` option to the config file
+- Added `OutputVolume` option to the config file
 
 ###### v1.2
-- Added a null check for the output folder.
-- Fixed a crash when trying to convert Firefox .url files.
+- Added a null check for the output folder
+- Fixed a crash when trying to convert Firefox .url files
 - Replaced FFmpeg.exe with the 32-bit version
 
 ###### v1.1
-- Added more descriptive error messages for failed Youtube downloads.
-- Added support for dropping .url files and parsing out the Youtube links.
+- Added more descriptive error messages for failed Youtube downloads
+- Added support for dropping .url files and parsing out the Youtube links
