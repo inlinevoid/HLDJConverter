@@ -12,7 +12,7 @@ Converts your music/media into a format that HLDJ can play.
 4. That's it!
 
 #### What media formats can it convert?
-Some common formats include: mp3, mp4, ogg, wav, flv, avi, mov, wmv
+Some common formats include: `mp3`, `mp4`, `ogg`, `wav`, `flv`, `avi`, `mov`, `wmv`
 
 HLDJConverter uses [FFmpeg](https://www.ffmpeg.org/general.html#Audio-Codecs) to do all of the conversions therefore anything FFmpeg can convert, HLDJ can convert.
 
