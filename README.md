@@ -25,7 +25,7 @@ Alright!  No problem, there's a few things you can do:
 It's very likely that Youtube functionality will break as time goes on due to the Youtube download process constantly changing.  So if it stops working for you, it's probably broken and needs to be updated.  Let me know!
 
 #### Screenshots
-![Screenshot](http://i.imgur.com/h77YRC9.png)
+![Screenshot](http://i.imgur.com/uHlMNTG.png)
 
 #### Changelog
 ###### v1.4
