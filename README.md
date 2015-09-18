@@ -5,12 +5,15 @@
 Converts your music/media into a format that HLDJ can play.
 
 #### How do I use it?
-1. Run `HLDJConverter.exe`
+1. Extract the `HLDJConverter` folder from the zip file.
+2. Run `HLDJConverter.exe`
 2. Set the `Output Folder` to the directory you want converted songs saved to.  Usually `HLDJ\Audio`.
-3. Drag any media files (.mp3, .ogg, .mp4, .wav, etc.) or Youtube links into the drop area.
+3. Paste or drag-and-drop any files/Youtube links into the drop area.
 4. That's it!
 
 #### What media formats can it convert?
+Some common formats include: mp3, mp4, ogg, wav, flv, avi, mov, wmv
+
 HLDJConverter uses [FFmpeg](https://www.ffmpeg.org/general.html#Audio-Codecs) to do all of the conversions therefore anything FFmpeg can convert, HLDJ can convert.
 
 #### Hold on, did you say I can convert "Youtube links"?
