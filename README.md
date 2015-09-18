@@ -29,7 +29,7 @@ It's very likely that Youtube functionality will break as time goes on due to th
 
 #### Changelog
 ###### v1.4
-- Added invalid Youtube link error message
+- Added an error message for invalid Youtube links
 - Added crash logs
 - Added automatic Gist upload of crash logs
 - Added the ability to paste links/files using the `ctrl + v` shortcut
