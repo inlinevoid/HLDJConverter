@@ -2,7 +2,7 @@
 **[Click here to download v1.4 for Windows](https://github.com/inlinevoid/HLDJConverter/releases/download/1.4/HLDJC.1.4.zip)**
 
 #### What does it do?
-Converts your music/media into a format that HLDJ can play.
+Converts your music/media into a format that HLDJ can play.  By default, that is 22050hz; mono channel.
 
 #### How do I use it?
 1. Extract the `HLDJConverter` folder from the zip file.
