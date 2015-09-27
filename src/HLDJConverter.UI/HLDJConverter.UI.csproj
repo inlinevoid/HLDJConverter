@@ -162,7 +162,7 @@
     <EmbeddedResource Include="..\..\lib\YoutubeExtractor.dll">
       <Link>Resources\Assemblies\YoutubeExtractor.dll</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\HLDJConverter\bin\Release\HLDJConverterLib.dll">
+    <EmbeddedResource Include="..\HLDJConverter\bin\$(Configuration)\HLDJConverterLib.dll">
       <Link>Resources\Assemblies\HLDJConverterLib.dll</Link>
     </EmbeddedResource>
     <Content Include="ffmpeg.exe">
