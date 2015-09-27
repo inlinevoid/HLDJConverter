@@ -18,14 +18,16 @@ namespace HLDJConverter
             var processCompletionTask = new TaskCompletionSource<object>();
             process.Exited += async (s, a) =>
             {
+                //Console.WriteLine(process.StandardOutput.ReadToEnd());
+                //Console.WriteLine(process.StandardError.ReadToEnd());
                 await Task.Run(async () => await FixFFmpegWavFileHeader(dstFilepath));
                 processCompletionTask.SetResult(null);
             };
 
             process.StartInfo = new ProcessStartInfo
             {
-                //RedirectStandardOutput = true,
                 //RedirectStandardError = true,
+                //RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = @"ffmpeg.exe",
@@ -92,7 +94,7 @@ namespace HLDJConverter
         private static async Task FixFFmpegWavFileHeader(string filepath)
         {
             const int FFmpegHeaderSizeInBytes = 34;
-
+            
             // Load the file into memory
             byte[] data;
             using(var file = File.OpenRead(filepath))
