@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using HLDJConverter.UI.Models;
 using Newtonsoft.Json;
+using YoutubeExtractor;
 
 namespace HLDJConverter.UI
 {
