@@ -7,7 +7,7 @@ Converts your music/media into 22050hz mono channel, the current format for CSGO
 #### How do I use it?
 1. Extract the `HLDJConverter` folder from the zip file.
 2. Run `HLDJConverter.exe`
-2. Set the `Output Folder` to the directory you want converted songs saved to.  Usually `...\HLDJ\Audio`.
+2. Set the `Output Folder` to the directory you want converted songs saved to.
 3. Copy/paste or drag/drop any files or Youtube links into the drop area.
 4. That's it!
 
