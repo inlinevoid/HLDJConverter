@@ -2,13 +2,13 @@
 **[Click here to download v1.4 for Windows](https://github.com/inlinevoid/HLDJConverter/releases/download/1.4.1/HLDJConverter.1.4.1.zip)**
 
 #### What does it do?
-Converts your music/media into a format that HLDJ can play.  By default, that is 22050hz; mono channel.
+Converts your music/media into 22050hz mono channel, the current format for CSGO that [HLDJ](http://www.hldj.org/) can play.
 
 #### How do I use it?
 1. Extract the `HLDJConverter` folder from the zip file.
 2. Run `HLDJConverter.exe`
-2. Set the `Output Folder` to the directory you want converted songs saved to.  Usually `HLDJ\Audio`.
-3. Paste or drag-and-drop any files/Youtube links into the drop area.
+2. Set the `Output Folder` to the directory you want converted songs saved to.  Usually `...\HLDJ\Audio`.
+3. Copy/paste or drag/drop any files or Youtube links into the drop area.
 4. That's it!
 
 #### What media formats can it convert?
@@ -24,6 +24,8 @@ Alright!  No problem, there's a few things you can do:
 * Submit an issue here on Github.
 * Send me an email (inlinevoidmain@gmail.com)
 * Fix it yourself and submit a pull request.
+
+If HLDJConverter is crashing, a file called `HLDJConverterCrashLog.txt` should be created in the HLDJConverter directory.  At the top of that file is a link you can send me that will help debug the crash you're getting.
 
 It's very likely that Youtube functionality will break as time goes on due to the Youtube download process constantly changing.  So if it stops working for you, it's probably broken and needs to be updated.  Let me know!
 
