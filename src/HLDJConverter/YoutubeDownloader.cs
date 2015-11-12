@@ -6,16 +6,15 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using VideoLibrary;
-
+using YoutubeExtractor;
 namespace HLDJConverter
 {
     public sealed class VideoDownload
     {
-        public readonly Video Video;
+        public readonly VideoLibrary.Video Video;
         public readonly string Filepath;
 
-        public VideoDownload(Video video, string filepath)
+        public VideoDownload(VideoLibrary.Video video, string filepath)
         {
             Video = video;
             Filepath = filepath;
@@ -35,7 +34,7 @@ namespace HLDJConverter
 
     public sealed class YoutubeDownloader
     {
-        public static async Task<Result<YoutubeExtractor.VideoInfo, string>> QueryYoutubeVideoOld(string link)
+        public static async Task<Result<VideoInfo, string>> QueryYoutubeVideoOld(string link)
         {
             var id = ExtractYoutubeID(link);
             if(string.IsNullOrEmpty(id))
@@ -51,7 +50,8 @@ namespace HLDJConverter
                     .OrderByDescending(info => info.AudioBitrate)
                     .First();
 
-                if(video.RequiresDecryption)
+                if (video.RequiresDecryption)
+                    
                     await Task.Run(() => YoutubeExtractor.DownloadUrlResolver.DecryptDownloadUrl(video));
 
                 return video;
@@ -91,7 +91,7 @@ namespace HLDJConverter
             }
         }
 
-        public static async Task<Result<Video, string>> QueryYoutubeVideo(string link)
+        public static async Task<Result<VideoLibrary.Video, string>> QueryYoutubeVideo(string link)
         {
             // Run the link through a parser that can extract the youtube ID from various
             // versions of valid youtube links.
@@ -103,9 +103,10 @@ namespace HLDJConverter
             
             try
             {
-                var videos = await YouTubeService.Default.GetAllVideosAsync(link);
+              
+                var videos = await VideoLibrary.YouTube.Default.GetAllVideosAsync(link);
                 var video = videos
-                    .Where(info => info.AudioFormat != AudioFormat.Unknown)
+                    .Where(info => info.AudioFormat != VideoLibrary.AudioFormat.Unknown)
                     .OrderByDescending(info => info.AudioBitrate)
                     .First();
 
@@ -121,7 +122,7 @@ namespace HLDJConverter
             }
         }
 
-        public static async Task<Result<VideoDownload, string>> DownloadYoutubeVideo(Video video)
+        public static async Task<Result<VideoDownload, string>> DownloadYoutubeVideo(VideoLibrary.Video video)
         {
             // We combine the VideoID with a DateTime hashcode just incase multiple copies
             // of the same video are being downloaded.  That way there won't be any file clashes.

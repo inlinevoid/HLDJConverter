@@ -31,7 +31,7 @@ namespace HLDJConverter
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = @"ffmpeg.exe",
-                Arguments = $"-y -i \"{srcFilepath}\" -map_metadata -1 -aq 100 -ac 1 -acodec pcm_s16le -ar {dstBitrate.ToString()} -af \"volume={dstVolume:0.00}\" \"{dstFilepath}\"",
+                Arguments = $"-y -i \"{srcFilepath}\" -map_metadata -1 -aq 100 -ac 1 -acodec pcm_s16le -ar {dstBitrate.ToString()} -af \"volume={dstVolume.ToString("0.00").Replace(',', '.')}\" \"{dstFilepath}\"",
             };
             
             process.Start();
