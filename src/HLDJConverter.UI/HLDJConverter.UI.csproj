@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HLDJConverter.UI</RootNamespace>
     <AssemblyName>HLDJConverter</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,9 +57,6 @@
     <ApplicationIcon>..\..\assets\hldjicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="libvideo">
-      <HintPath>..\..\..\..\..\Github\libvideo\src\libvideo\bin\Release\libvideo.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -81,8 +79,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="YoutubeExtractor">
-      <HintPath>..\..\..\..\..\Github\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor\bin\Release\Full\YoutubeExtractor.dll</HintPath>
+    <Reference Include="YoutubeExtractor, Version=0.10.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\YoutubeExtractor\YoutubeExtractor\bin\Release\Full\YoutubeExtractor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +107,10 @@
     <Page Include="Resources\Styles\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\ListViewItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\TextBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -158,11 +161,11 @@
     <EmbeddedResource Include="..\..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll">
       <Link>Resources\Assemblies\Ookii.Dialogs.Wpf.dll</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\..\..\..\Github\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor\bin\Debug\Full\YoutubeExtractor.dll">
-      <Link>Resources\Assemblies\YoutubeExtractor.dll</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\HLDJConverter\bin\Release\HLDJConverterLib.dll">
+    <EmbeddedResource Include="..\HLDJConverter\bin\$(Configuration)\HLDJConverterLib.dll">
       <Link>Resources\Assemblies\HLDJConverterLib.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\packages\YoutubeExtractor\YoutubeExtractor\bin\$(Configuration)\Full\YoutubeExtractor.dll">
+      <Link>Resources\Assemblies\YoutubeExtractor.dll</Link>
     </EmbeddedResource>
     <Content Include="ffmpeg.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

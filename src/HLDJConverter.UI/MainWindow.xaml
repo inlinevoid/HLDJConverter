@@ -8,7 +8,8 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Width="380" Height="450"
         Topmost="{Binding Settings.KeepWindowTopmost}"
-        Icon="Resources/Images/hldjicon.ico">
+        Icon="Resources/Images/hldjicon.ico"
+        Background="#FDFDFD">
     <Grid>
         <!-- MainWindow Layout -->
         <Grid.RowDefinitions>
@@ -20,7 +21,13 @@
         </Grid.RowDefinitions>
         
         <!-- Header -->
-        <Border Background="#F4F4F4" Padding="10, 0, 10, 0" Height="26">
+        <Border Background="#F5F5F5" Padding="10, 0, 10, 0" Height="26" BorderBrush="#E5E5E5" BorderThickness="0, 0, 0, 1">
+            <!--<Border.Background>
+                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1.0">
+                    <GradientStop Color="#E1E1E1" Offset="0.0"/>
+                    <GradientStop Color="#E8E8E8" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>-->
             <Grid Grid.Row="0" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -44,7 +51,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Output Folder" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="2" Focusable="False" Text="{Binding OutputFolder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+            <TextBox Grid.Column="2" Focusable="False" VerticalContentAlignment="Center" Text="{Binding OutputFolder}" ToolTip="{Binding OutputFolder}"/>
             <Button Width="46" Grid.Column="4" Content="" Focusable="False" FontFamily="Segoe UI Symbol" SnapsToDevicePixels="True" Click="OutputFolderDialogClick"/>
         </Grid>
         
@@ -71,27 +78,38 @@
                 <ListView x:Name="ConversionJobsListView"  BorderThickness="0" ItemsSource="{Binding ConversionJobs}" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="VerticalOnly">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid VerticalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="0, 0, 13, 0" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Grid.Column="1" Text="{Binding StatusDisplay}"/>
-                            </Grid>
+                            <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="10, 0, 10, 0" ToolTip="{Binding Title}" Background="Transparent">
+                                <Grid VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="0, 0, 13, 0" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding StatusDisplay}"/>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    
                     <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Focusable" Value="False"/>
-                            <Setter Property="IsHitTestVisible" Value="False"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            <Setter Property="Height" Value="26"/>
+                        <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource {x:Type ListViewItem}}">
                             <Setter Property="BorderBrush" Value="#E5E5E5"/>
                             <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
-                            <Setter Property="Padding" Value="10, 0, 10, 0"/>
+                            <Setter Property="Height" Value="26"/>
                         </Style>
                     </ListView.ItemContainerStyle>
+                    <!--<ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                            --><!--<Setter Property="Height" Value="26"/>--><!--
+                            <Setter Property="BorderBrush" Value="#E5E5E5"/>
+                            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+                            <Setter Property="Padding" Value="0, 0, 0, 0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>-->
                 </ListView>
             </Border>
         </Grid>

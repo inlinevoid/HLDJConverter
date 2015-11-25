@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace HLDJConverter.UI
     {
         public Settings Settings { get; set; }
         public ObservableCollection<ConversionItem> ConversionJobs { get; set; }
+        public IYoutubeDownloader YoutubeDownloader;
 
         public MainWindow()
         {
@@ -29,6 +31,7 @@ namespace HLDJConverter.UI
 
             Settings = new Settings();
             ConversionJobs = new ObservableCollection<ConversionItem>();
+            YoutubeDownloader = new YoutubeDownloaders.YTEYoutubeDownloader();
 
             // Load user config
             if(File.Exists("HLDJConverterConfig.cfg"))
@@ -44,7 +47,7 @@ namespace HLDJConverter.UI
                 }
             }
 
-            Title = $"HLDJConverter v{ApplicationHelper.GetVersion()}";
+            Title = $"HLDJConverter {ApplicationHelper.GetVersion()}";
             InitializeComponent();
         }
 
@@ -100,7 +103,7 @@ namespace HLDJConverter.UI
                     }
                     else if(string.Compare(extension, ".url", true) == 0)
                     {
-                        HandleYoutubeConversion(YoutubeDownloader.ExtractURLFromShortcut(filepath));
+                        HandleYoutubeConversion(YoutubeHelpers.ExtractURLFromShortcut(filepath));
                     }
                     else
                     {
@@ -110,12 +113,11 @@ namespace HLDJConverter.UI
             }
         }
 
-
-        private async void HandleYoutubeConversion(string link)
+        private async void HandleYoutubeConversion(string videoUrl)
         {
             var job = new ConversionItem
             {
-                Title = link
+                Title = videoUrl
             };
 
             ConversionJobs.Add(job);
@@ -162,7 +164,7 @@ namespace HLDJConverter.UI
 
             // Resolve
             job.Status = ConversionJobStatus.Resolving;
-            var queryResult = await YoutubeDownloader.QueryYoutubeVideoOld(link);
+            var queryResult = await YoutubeDownloader.GetYoutubeVideoInfo(videoUrl);
             if(queryResult.IsError)
             {
                 job.Status = ConversionJobStatus.Error;
@@ -170,13 +172,16 @@ namespace HLDJConverter.UI
             }
             else
             {
-                var video = queryResult.Value;
-
                 // Download
                 job.Status = ConversionJobStatus.Downloading;
-                job.Title = $"{video.Title} ({video.Resolution.ToString()}p)";
+                var video = queryResult.Value;
+                var highestQualityVersion = video.Formats
+                    .Where(v => v.AudioCodec != AudioCodec.Unkown)
+                    .OrderByDescending(info => info.Resolution)
+                    .First();
+                job.Title = $"YouTube - {video.Title}";
 
-                var downloadResult = await YoutubeDownloader.DownloadYoutubeVideoOld(video);
+                var downloadResult = await YoutubeDownloader.DownloadYoutubeVideo(highestQualityVersion);
                 if(downloadResult.IsError)
                 {
                     job.Status = ConversionJobStatus.Error;
@@ -184,13 +189,12 @@ namespace HLDJConverter.UI
                 }
                 else
                 {
-                    var download = downloadResult.Value;
-
                     // Convert
                     job.Status = ConversionJobStatus.Converting;
+                    var download = downloadResult.Value;
                     string filename = MediaConverter.RemoveInvalidFilenameCharacters(video.Title);
                     string dstFilepath = MediaConverter.EnsureUniqueFilepath($"{Settings.OutputFolder}\\{filename}.wav");
-                    await MediaConverter.FFmpegConvertToWavAsync(download.Filepath, dstFilepath, Settings.OutputBitrate, Settings.OutputVolume);
+                    await MediaConverter.FFmpegConvertToWavAsync(download.Filepath, dstFilepath, Settings.OutputFrequency, Settings.OutputVolumeMultiplier);
 
                     // Finish
                     job.Status = ConversionJobStatus.Done;
@@ -215,7 +219,7 @@ namespace HLDJConverter.UI
             job.Status = ConversionJobStatus.Converting;
             filename = MediaConverter.RemoveInvalidFilenameCharacters(filename);
             string dstFilepath = MediaConverter.EnsureUniqueFilepath($"{Settings.OutputFolder}\\{filename}.wav");
-            await MediaConverter.FFmpegConvertToWavAsync(filepath, dstFilepath, Settings.OutputBitrate, Settings.OutputVolume);
+            await MediaConverter.FFmpegConvertToWavAsync(filepath, dstFilepath, Settings.OutputFrequency, Settings.OutputVolumeMultiplier);
 
             // Finish
             job.Status = ConversionJobStatus.Done;

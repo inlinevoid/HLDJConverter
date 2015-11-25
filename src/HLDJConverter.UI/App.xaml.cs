@@ -20,6 +20,8 @@ namespace HLDJConverter.UI
         [STAThread]
         public static void Main(string[] args)
         {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            CultureInfo.CurrentUICulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
             AppDomain.CurrentDomain.UnhandledException += HandleUnhandledException;

@@ -39,7 +39,7 @@ namespace HLDJConverter.Tests
 
             foreach(var test in testCases)
             {
-                Assert.AreEqual(test.ExpectedID, YoutubeDownloader.ExtractYoutubeID(test.Link));
+                Assert.AreEqual(test.ExpectedID, YoutubeHelpers.ExtractYoutubeID(test.Link));
             }
         }
 
@@ -56,7 +56,7 @@ namespace HLDJConverter.Tests
 
             foreach(var test in testCases)
             {
-                Assert.AreEqual(test.ExpectedURL, YoutubeDownloader.ExtractURLFromShortcut(test.ShortcutFilepath));
+                Assert.AreEqual(test.ExpectedURL, YoutubeHelpers.ExtractURLFromShortcut(test.ShortcutFilepath));
             }
         }
     }
