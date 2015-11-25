@@ -1,13 +1,13 @@
-#### Where can I download it?
-**[Click here to download v1.4 for Windows](https://github.com/inlinevoid/HLDJConverter/releases/download/1.4.1/HLDJConverter.1.4.1.zip)**
+### [Click here to download v1.5 for Windows](https://github.com/inlinevoid/HLDJConverter/releases/download/1.5/HLDJConverter.1.5.zip)
+HLDJConverter is a standalone application, no installation necessary.  When you no longer need it, just delete the folder.
 
 #### What does it do?
 Converts your music/media into 22050hz mono channel, the current format for CSGO that [HLDJ](http://www.hldj.org/) can play.
 
 #### How do I use it?
-1. Extract the `HLDJConverter` folder from the zip file.
-2. Run `HLDJConverter.exe`
-2. Set the `Output Folder` to the directory you want converted songs saved to.
+1. Extract the **HLDJConverter** folder from the zip file.
+2. Run **HLDJConverter.exe**
+2. Set the **Output Folder** to the directory you want converted songs saved to (usually ...\HLDJ\Audio)
 3. Copy/paste or drag/drop any files or Youtube links into the drop area.
 4. That's it!
 
@@ -21,6 +21,7 @@ Yes! Dragging a youtube link into HLDJConverter will automatically download the 
 
 #### It's not working and I'm getting errors!
 Alright!  No problem, there's a few things you can do:
+* If it's crashing on startup, [try updating your .NET version to 4.6](https://www.microsoft.com/en-us/download/details.aspx?id=48130).
 * Submit an issue here on Github.
 * Send me an email (inlinevoidmain@gmail.com)
 * Fix it yourself and submit a pull request.
@@ -33,6 +34,13 @@ It's very likely that Youtube functionality will break as time goes on due to th
 ![Screenshot](http://i.imgur.com/uHlMNTG.png)
 
 #### Changelog
+###### v1.5
+- Fixed crashes when running on computers with different languages than English.
+- Updated YoutubeExtractor version.  Should fix the recent errors when trying to convert from YouTube.
+- Updated to .NET 4.6
+- Minor UI changes and fixes.
+- Changed the YouTube download preferences.  Instead of looking for highest audio bitrate we look for highest video resolution.  This might result in higher quality in some cases.
+
 ###### v1.4
 - Added an error message for invalid Youtube links
 - Added crash logs
